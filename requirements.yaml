@@ -1,0 +1,8 @@
+name: qr-generator
+
+dependencies:
+    - python=3.11
+    - pip>=23.3
+    - pip:
+      - qrcode==7.4.2
+      - matplotlib==3.8.3
