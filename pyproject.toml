@@ -1,0 +1,143 @@
+[project]
+name = "wifi-qr-generator"
+version = "0.1.0"
+description = "Creates wifi QR codes for easy connection"
+readme = "README.md"
+authors = [
+    { name = "Eduardo", email = "ecastroth@pm.me" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "qrcode>=8.2",
+    "ruff>=0.16.10",
+]
+
+# ------------------------------------------------------------------------------
+# Ruff Configuration
+# ------------------------------------------------------------------------------
+[tool.ruff]
+# Python version of the project
+extend-include = ["*.ipynb"]
+extend-exclude = [".githooks"]
+
+# ------------------------------------------------------------------------------
+# Notes:
+# Flake8-DJango (DJ) Rules wasn't reviewed.
+# Flake8-gettext (INT) Rules were accepted but not used.
+# Last reviewed: 2024/11/20
+# ------------------------------------------------------------------------------
+[tool.ruff.lint]
+# Complete sets
+select = [
+    "S",  "F",  "W",  "I",  "N", "D", "B", "G", "A", "Q",
+    "UP", "C4", "EM", "FA", "PT", "TD", "PD",
+    "YTT", "BLE", "DTZ", "T10", "EXE", "ISC", "ICN", "LOG", "T20", "PYI", "RSE",
+    "RET", "SLF", "SIM", "ARG", "TCH", "FIX", "ERA", "PGH", "TRY", "FLY", "NPY",
+    "AIR", "RUF", "INP", "PIE",
+    "ASYNC", "SLOT", "PERF",
+]
+
+# Extension rules
+extend-select = [
+    "D212", "D417",
+    "E101", "E401", "E402", "E501", "E702", "E703", "E711", "E712", "E713",
+    "E714", "E721", "E722", "E731", "E902",
+    "ANN001", "ANN201", "ANN202", "ANN205", "ANN206",
+    "FBT003",
+    "COM818", "COM819",
+    "TID252", 
+    "FURB105", "FURB110", "FURB113", "FURB116", "FURB118", "FURB129", "FURB132",
+    "FURB136", "FURB142", "FURB148", "FURB152", "FURB154", "FURB156", "FURB157",
+    "FURB163", "FURB164", "FURB167", "FURB168", "FURB169", "FURB171", "FURB180",
+    "FURB188", "FURB192"
+]
+
+# Remove rules
+ignore = [
+    "N802", "N804",
+    "UP040",
+    "B905",
+    "PT003",
+    "TRY002", "TRY003", "TRY300",
+    "PLR0915", "PLR0917",
+    "PLW1514",
+    "D204", "D105",
+    "G004",
+    "TD003",
+    "LOG015",
+    "INP001",
+    "S603", "S404", "S607"
+]
+
+# ------------------------------------------------------------------------------
+# Lint Configuration
+# ------------------------------------------------------------------------------
+# ------------------
+# pyCodeStyle (E, W)
+# ------------------
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 75
+max-line-length = 99
+
+# ------------
+# McCabe (C90)
+# ------------
+[tool.ruff.lint.mccabe]
+max-complexity = 2
+
+# --------------
+# pyDocStyle (D)
+# --------------
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+# ---------
+# iSort (I)
+# ---------
+[tool.ruff.lint.isort] 
+case-sensitive = false
+detect-same-package = true
+force-sort-within-sections = false
+from-first = false
+length-sort = true
+lines-after-imports = 2
+no-sections = false
+section-order = [
+    "future", "standard-library", "third-party", "first-party", "local-folder"
+    ]
+
+# ------------------------
+# Flake8 PyTest Style (PT)
+# ------------------------
+[tool.ruff.lint.flake8-pytest-style]
+mark-parentheses = true
+fixture-parentheses = true
+parametrize-names-type = "tuple"
+parametrize-values-type = "list"
+parametrize-values-row-type = "tuple"
+
+# -----------------
+# Flake8 Quotes (Q)
+# -----------------
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+multiline-quotes = "double"
+docstring-quotes = "double"
+
+# -------------------
+# Flake8 Tidy Imports
+# -------------------
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+# -------------------
+# PyLint
+# -------------------
+[tool.ruff.lint.pylint]
+max-public-methods = 10
+max-returns = 4
+max-branches = 4
+max-args = 7
+max-locals = 30
+max-bool-expr = 5
